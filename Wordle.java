@@ -2,7 +2,7 @@ public class Wordle {
 
     // Reads all words from dictionary filename into a String array.
     public static String[] readDictionary(String filename) {
-		In in = new In(dictionary.txt);
+		In in = new In(filename);
         String[] dict = in.readAllStrings();
         in.close();
         return dict;
@@ -18,8 +18,8 @@ public class Wordle {
     // Simple helper: check if letter c appears anywhere in secret (true), otherwise
     // return false.
     public static boolean containsChar(String secret, char c) {
-		for (int i = 0; i < secret.length; i++) {
-            if (secret[i] == c) {
+		for (int i = 0; i < secret.length(); i++) {
+            if (secret.charAt(i) == c) {
                 return true;
             }
         }
@@ -114,7 +114,7 @@ public class Wordle {
 
         // Choose secret word
         String secret = chooseSecretWord(dict);
-        
+
         // Prepare 2D arrays for guesses and results
         char[][] guesses = new char[MAX_ATTEMPTS][WORD_LENGTH];
         char[][] results = new char[MAX_ATTEMPTS][WORD_LENGTH];
