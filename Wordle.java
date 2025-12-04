@@ -37,6 +37,9 @@ public class Wordle {
                 resultRow[i] = 'G';
                 unmatchedSecret[i] = '0';
             }
+            else {
+                resultRow[i] = ' ';
+            }
         }
 
             // Mark Y if the client guess correct character but not correct place
@@ -44,16 +47,11 @@ public class Wordle {
             if (resultRow[i] != 'G') {
                 char guessChar = guess.charAt(i);
                 
-                String remainingSecret = new String(unmatchedSecret);
-
-                if (containsChar(remainingSecret, guessChar)) {
+                if (containsChar(secret, guessChar)) {
                     resultRow[i] = 'Y';
-                for (int j = 0; j < unmatchedSecret.length; j++) {
-                        if (unmatchedSecret[j] == guessChar) {
-                            unmatchedSecret[j] = '0'; // Consume the letter
-                            break; // Stop after consuming the first instance
-                        }
                 }
+                else {
+                resultRow[i] = '_'; 
             }
         }
     }
