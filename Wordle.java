@@ -43,20 +43,10 @@ public class Wordle {
             for (int i = 0; i < secret.length(); i++) {
             if (resultRow[i] != 'G') {
                 char guessChar = guess.charAt(i);
-
-                String remainingSecret = new String(unmatchedSecret);
                 
-                if (containsChar(remainingSecret, guessChar)) {
+                if (containsChar(secret, guessChar)) {
                     resultRow[i] = 'Y';
-                    for (int j = 0; j < unmatchedSecret.length; j++) {
-                        if (unmatchedSecret[j] == guessChar) {
-                            unmatchedSecret[j] = '0';
-                            break;
-                        }
-                    }
-                } else {
-                    resultRow[i] = '_';
-                }
+                } 
             }
         }
     }
