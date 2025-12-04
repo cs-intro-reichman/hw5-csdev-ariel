@@ -44,12 +44,20 @@ public class Wordle {
             if (resultRow[i] != 'G') {
                 char guessChar = guess.charAt(i);
                 
-                if (containsChar(secret, guessChar)) {
+                String remainingSecret = new String(unmatchedSecret);
+
+                if (containsChar(remainingSecret, guessChar)) {
                     resultRow[i] = 'Y';
-                } 
+                for (int j = 0; j < unmatchedSecret.length; j++) {
+                        if (unmatchedSecret[j] == guessChar) {
+                            unmatchedSecret[j] = '0'; // Consume the letter
+                            break; // Stop after consuming the first instance
+                        }
+                }
             }
         }
     }
+}
 
     // Store guess string (chars) into the given row of guesses 2D array.
     // For example, of guess is HELLO, and row is 2, then after this function 
